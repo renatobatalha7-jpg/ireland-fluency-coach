@@ -124,7 +124,7 @@ perfis = c.fetchall()
 opcoes = ["Novo Usuário"] + [p[1] for p in perfis]
 user_choice = st.selectbox("Select Profile", opcoes)
 
-if user_choice == "Novo Usuário":
+ if user_choice == "Novo Usuário":
     nome = st.text_input("Name:")
     nivel = st.selectbox("Level:", ["Básico", "Pré-Intermediário", "Intermediário", "Intermediário Avançado", "Avançado"])
     if st.button("Create Profile"):
@@ -132,7 +132,6 @@ if user_choice == "Novo Usuário":
         conn.commit()
         st.rerun()
 else:
-    else:
     c.execute("SELECT id, dia_jornada FROM usuarios WHERE nome = ?", (user_choice,))
     dados_user = c.fetchone()
     if dados_user:
